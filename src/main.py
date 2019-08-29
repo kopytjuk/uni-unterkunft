@@ -22,5 +22,6 @@ render_args = {"title": report_title,
                "fuel_price": fuel_price_str}
 output = template.render(**render_args)
 
-with open("final.html", "w") as f:
+with open("examples/final.html", "w") as f:
     f.write(output)
+
