@@ -1,5 +1,7 @@
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
 
+.vscode
+
 # Created by https://www.gitignore.io/api/visualstudiocode,windows,jupyternotebooks,python
 # Edit at https://www.gitignore.io/?templates=visualstudiocode,windows,jupyternotebooks,python
 
