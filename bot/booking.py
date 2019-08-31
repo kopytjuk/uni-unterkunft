@@ -66,8 +66,6 @@ def get_cheapest_nearby_hotels(loc: Union[str, tuple], t_arrival: date, t_depart
     r_json = r.json()
     r_results = r_json["result"]
 
-    logging.info("Found {:d} results in the requested bounding box!")
-
     dict_list = [FlatDict(r ,delimiter=".") for r in r_results]
 
     df_hotels = pd.DataFrame(dict_list)
