@@ -7,7 +7,6 @@ import pandas as pd
 
 gmaps = googlemaps.Client(key=os.environ["GMAPS_API_KEY"])
 
-
 def get_distances(origin, destinations, departure_time:datetime):
 
     result_dict = gmaps.distance_matrix(origin, destinations,

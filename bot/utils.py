@@ -1,4 +1,25 @@
 from math import radians, cos, sin, asin, sqrt
+from functools import wraps
+
+import telegram
+from jinja2 import Environment, FileSystemLoader
+
+# load Jinja
+file_loader = FileSystemLoader("bot/templates/")
+jinja_env = Environment(loader=file_loader)
+
+def send_action(action: telegram.ChatAction):
+    """Sends `action` while processing func command."""
+
+    def decorator(func):
+        @wraps(func)
+        def command_func(update, context, *args, **kwargs):
+            context.bot.send_chat_action(chat_id=update.effective_message.chat_id, action=action)
+            return func(update, context, *args, **kwargs)
+
+        return command_func
+
+    return decorator
 
 def haversine(lat1, lon1, lat2, lon2):
     """
