@@ -26,12 +26,13 @@ sys.path.append(".")
 from bot.gmaps import get_locatation_attributes, get_distances
 from bot.booking import get_cheapest_nearby_hotels
 from bot.utils import haversine
+from bot.hotel import HotelHandler
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
                     level=logging.INFO)
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger("rafiq")
 
 
 # load Jinja
@@ -154,6 +155,9 @@ def main():
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("hotel", hotel))
     dp.add_handler(CommandHandler("alive", alive))
+
+    hotel_handler = HotelHandler(updater.bot)
+    dp.add_handler(hotel_handler.get_handler())
 
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("help", help))
