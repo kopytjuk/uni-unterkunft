@@ -10,6 +10,7 @@ from telegram import ParseMode
 
 sys.path.append(".")
 from bot.hotel import hotel_handler
+from bot.traffic import traffic_handler
 from bot.utils import send_action, jinja_env
 
 # Enable logging
@@ -47,6 +48,9 @@ def main():
 
     # add hotel handler
     dp.add_handler(hotel_handler)
+
+    # add hotel handler
+    dp.add_handler(traffic_handler)
 
     # on different commands - answer in Telegram
     dp.add_handler(CommandHandler("help", help))
