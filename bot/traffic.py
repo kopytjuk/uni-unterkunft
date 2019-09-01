@@ -82,7 +82,12 @@ def get_current_location(update, context):
 
         template = jinja_env.get_template("traffic_result.md")
 
-        update.message.reply_text(template.render({"duration": first_res["duration"]["text"], "duration_in_traffic": first_res["duration_in_traffic"]["text"]}), parse_mode=ParseMode.MARKDOWN)
+        traffic_jam = (first_res["duration_in_traffic"]["value"] /
+                       first_res["duration"]["value"] > 1.1)  # 20%
+
+        update.message.reply_text(template.render({"duration": first_res["duration"]["text"],
+                                                   "duration_in_traffic": first_res["duration_in_traffic"]["text"],
+                                                   "traffic_jam": traffic_jam}), parse_mode=ParseMode.MARKDOWN)
 
         return ConversationHandler.END
 

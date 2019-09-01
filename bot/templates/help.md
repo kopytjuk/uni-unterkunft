@@ -8,4 +8,6 @@ Availabale commands:
 
 `/hotel`: Hotel search engine for a particular place/sight/location
 
+`/traffic`: Traffic jam assistant
+
 _Copyright (c) 2019 Marat Kopytjuk_
